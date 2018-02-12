@@ -1,11 +1,22 @@
-var list = document.getElementById('list');
+$(function(){
+	console.log('DOM loaded - you can have fun');
 
-var add = document.getElementById('addElem');
+	var span = $("span");
+    span.each(function(index, element) {
+        if(index % 2 == 0) {
+            $(element).css('color', 'red');
+        };
+    });
 
-add.addEventListener('click', function() {
-  var element = document.createElement('li');
-  var x = document.getElementsByTagName('li').length;
-  element.innerHTML = 'item ' + x ;
-  
-  list.appendChild(element);
+    var paragraphs = $('p');
+	paragraphs.each(function(index, element) {
+
+    	var button = '<button class="btn" data-tmp="' + index + '">Click me</button>'
+    	$(element).append(button)
+
+	});
+
+	$("button").click(function(){
+		alert($(this).attr("data-tmp"));
+	});
 });
